@@ -1,31 +1,29 @@
 /*
 Kullanıcın girdiği gün ismine göre hafta içi ya da hafta sonu şeklinde mesaj yazdırsın
 */
+const readline = require('readline');
 
-let day="pazartesi"
-switch(day){
-    case "pazartesi":
-        console.log("Hafta İçi")
-        break;
-    case "salı":
-        console.log("Hafta İçi")
-    break;    
-    case "çarşamba":
-        console.log("Hafta İçi")
-        break;
-    case "perşembe":
-        console.log("Hafta İçi")
-        break;
-    case "cuma":
-        console.log("Hafta İçi")
-        break;
-    case "cumartesi":
-        console.log("Hafta Sonu")
-        break;  
-    case "pazar":
-        console.log("Hafta Sonu")
-        break;   
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Hangi günün olduğunu yazınız (Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi, Pazar): ', (day) => {
+  switch(day.toLowerCase()) {
+    case 'pazartesi':
+    case 'salı':
+    case 'çarşamba':
+    case 'perşembe':
+    case 'cuma':
+      console.log(`${day} hafta içi günüdür.`);
+      break;
+    case 'cumartesi':
+    case 'pazar':
+      console.log(`${day} hafta sonu günüdür.`);
+      break;
     default:
-        console.log("Lütfen geçerli bir gün giriniz")           
-
-}
+      console.log('Geçersiz gün adı girdiniz.');
+  }
+  
+  rl.close();
+});
